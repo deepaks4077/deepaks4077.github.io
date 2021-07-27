@@ -1,24 +1,25 @@
 ---
 layout: about
-title: about
 permalink: /
-description: <a href="#">Affiliations</a>. Address. Contacts. Moto. Etc.
+title: about
+description: Machine Learning • School Of Computer Science • <a href="http://www.mcgill.ca"> McGill University </a> and <a href = "https://mila.quebec/en/">MILA</a>.
 
 profile:
   align: right
-  image: prof_pic.jpg
-  address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+  image: linkedinphoto.jpeg
 
-news: true  # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+news: true
+social: true
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hi, I am a Computer Science Master's student at  <a href="https://www.cs.mcgill.ca/">McGill University</a> and <a href = "https://mila.quebec/en/">MILA</a>, working under <a href="https://www.cs.mcgill.ca/~jpineau/">Dr. Joelle Pineau</a> and <a href="https://audurand.wordpress.com/">Dr. Audrey Durand</a>. 
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/){:target="\_blank"} and [Academicons](https://jpswalsh.github.io/academicons/){:target="\_blank"}, like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+<p><strong>Research Interests</strong>
+<br>I am interested in machine learning interpretability, graph representation learning, model uncertainty, active learning, and causal inference. They are primarily motivated by the application area that I am focussing on, e.g. model interpretability for ML applications in medicine.
+
+<br>
+<br>I am passionate about their applications to improve human productivity and decision making in domains like <a href="https://youtu.be/C4LbAUa4ZwY">healthcare</a> and finance
+</p>
+
+Please feel free to <a href="mailto:{{site.email}}">email</a> me, or connect with me on <a href="https://www.linkedin.com/in/{{site.linkedin_username}}">linkedin</a>.

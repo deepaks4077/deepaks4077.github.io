@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2016-06-02
 inline: true
 ---
 
-A simple inline announcement.
+I graduated from Mcgill University with a B.Eng. in Software.

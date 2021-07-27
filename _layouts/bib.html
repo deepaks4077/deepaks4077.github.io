@@ -72,7 +72,17 @@
         <em>{{entry.journal}}</em>
       {% elsif entry.type == "inproceedings" %}
         <em>In {{entry.booktitle}}</em>
+      {% elsif entry.type == "misc" %}
+        <em>In {{entry.note}},</em>
       {% endif %}
+      </div>
+      
+      <div class="periodical">
+      {% if entry.type == "misc" %}
+        <em>{{entry.annote}}</em>
+      {% endif %}
+      </div>
+      <div class="periodical">
       {% if entry.year %}
         {{entry.year}}
       {% endif %}

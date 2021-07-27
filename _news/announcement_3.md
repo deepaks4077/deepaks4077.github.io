@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2016-01-15 07:59:00-0400
+date: 2017-09-11
 inline: true
 ---
 
-A simple inline announcement with Markdown emoji! :sparkles: :smile:
+Rotated into the G10 Rates Pricing team at Citi.
