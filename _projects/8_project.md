@@ -5,6 +5,5 @@ description: Exploring the space of drug combinations to discover synergistic dr
 img: /assets/img/ai-in-the-loop.png
 redirect: https://github.com/RECOVERcoalition/Recover
 importance: 1
-category: work
-giscus_comments: true
+category: research
 ---
