@@ -16,10 +16,11 @@ Hi, I am a Computer Science Master's student at  <a href="https://www.cs.mcgill.
 
 
 <p><strong>Research Interests</strong>
-<br>I am interested in machine learning interpretability, graph representation learning, model uncertainty, active learning, and causal inference. They are primarily motivated by the application area that I am focussing on, e.g. model interpretability for ML applications in medicine.
-
+<br> My research interests are primarily motivated by the application area that I am focussing on, e.g. model interpretability for ML applications in medicine. I am interested in machine learning interpretability, graph representation learning, model uncertainty, active learning, and causal inference.
 <br>
-<br>I am passionate about their applications to improve human productivity and decision making in domains like <a href="https://youtu.be/C4LbAUa4ZwY">healthcare</a> and finance
+<br>I am passionate about their applications to improve human productivity and decision making in domains like healthcare and finance.
 </p>
 
-Please feel free to <a href="mailto:{{site.email}}">email</a> me, or connect with me on <a href="https://www.linkedin.com/in/{{site.linkedin_username}}">linkedin</a>.
+<p><strong>Contact</strong>
+<br>
+If you'd like to chat about research, discuss a potential collaboration or a job opportunity, please feel free to reach out to me via <a href="mailto:{{site.email}}">email</a> or <a href="https://www.linkedin.com/in/{{site.linkedin_username}}">linkedin</a>.
