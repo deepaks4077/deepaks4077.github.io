@@ -4,7 +4,7 @@ title: projects
 permalink: /projects/
 description: A collection of some of my most recent work.
 nav: true
-display_categories: [research, work]
+display_categories: [research, coursework]
 horizontal: false
 ---
 
