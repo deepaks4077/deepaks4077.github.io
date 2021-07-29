@@ -2,9 +2,9 @@
 layout: page
 title: projects
 permalink: /projects/
-description:
+description: A collection of some of my most recent work.
 nav: true
-display_categories: [research]
+display_categories: [research, work]
 horizontal: false
 ---
 
