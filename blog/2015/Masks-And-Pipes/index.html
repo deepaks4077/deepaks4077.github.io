@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Deepak  Sharma | blank</title>
+<title>Deepak  Sharma | Masks And Pipes</title>
 <meta name="description" content="This might become useful over time">
 
 <!-- Open Graph -->
@@ -30,7 +30,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/blog/2015/Masks-And-Pipes/">
 <meta name="author" content="Deepak Sharma"/>
 
 <!-- JQuery -->
@@ -112,8 +112,6 @@
           
           
           
-          
-          
           <li class="nav-item ">
               <a class="nav-link" href="/projects/">
                 projects
@@ -150,38 +148,93 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>Stochastic Musings</h1>
-    <h2>A collection of my thoughts on software, artificial intelligence, and healthcare</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Masks And Pipes</h1>
+    <p class="post-meta">June 30, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>Linux is FUN. Open Source is FUN. I am looking into on an open-source project called Loris (<a href="https://github.com/aces/Loris">link</a>) and I had to inspect the installation script because of a failed install. The installation file introduced me to umasks and pipes.</p>
+
+<h4 id="bitmasks">Bitmasks</h4>
+
+<p>What is a bitmask? What are they used for? The literal meaning would suggest they are used to hide bits or the true significance/position of bits in a larger collection. While they are used in encryption (in hashing for example), their typical purpose is to help decrypt access control lists and in computer graphics.</p>
+
+<h4 id="user-mask-or-the-default-user-created-directoryfile-permission-bitmask">User Mask or The default user created directory/file permission bitmask</h4>
+
+<p>The umask is used to specify the default user created file/directory permissions and therefore the level of security for software resources.</p>
+
+<p>The maximum default file permissions are 666 and the maximum default directory permissions are 777. Why not 777 for files? 
+According to <a href="http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html"><strong>this post</strong></a> it is because <strong><em>only binaries and scripts are executable, regular files are not</em></strong>.</p>
+
+<p>So how do you calculate the default file/directory permissions? Through the octal subtraction of the umask from file/directory maximum permissions.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Directories 777 &amp; ~umask
+Files 666 &amp; ~umask 
+</code></pre></div></div>
+
+<p>where ~umask is the binary complement of the umask.</p>
+
+<p>If the umask is 077 then the default directory permissions are 700 and for files its 600, which is the srictest set of permissions you can give.</p>
+
+<p>As you increase the value of the umask the default security policy becomes more loose and with 000 <strong>everyone can read, write and execute files and directories</strong> (where applicable ofcourse).</p>
+
+<p><strong>Pipes</strong></p>
+
+<p>Consider this script:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LOGPIPE=/tmp/pipe.$$
+mkfifo -m 700 $LOGPIPE
+trap "rm -f $LOGPIPE" EXIT
+tee -a &lt;$LOGPIPE $LOGFILE &amp;
+exec 1&gt;$LOGPIPE 2&gt;&amp;1
+</code></pre></div></div>
+
+<p>What is the pipe.$$ file? What do the commands mkfifo, trap, tee and exec do ?</p>
+
+<ol>
+  <li>
+    <p>mkfifo opens a FIFO file with file extension $$ which is a special variable that is replaced by the process id. A FIFO file 	created by mkfifo needs to be open for writing and reading at the same time to work. So a process needs to write to the 		file and another process needs to read from the file. This is where the tee and exec commands come in.</p>
+  </li>
+  <li>
+    <p>The trap command looks for a system signal (EXIT in this case) and executes the bash commands in the double quotes. 
+The signal received is any signal that indicates exit like HUP and INT (hangup and interrupt respectively).</p>
+
+    <p>side note: (There is no EXIT signal in Unix. The list of signals available can be viewed by executing kill -l )</p>
+  </li>
+  <li>
+    <p>The tee command duplicates the input received from stdout to another file. So the output is received on stdout and also 		inside the file. The ‘-a’ option indicates file append. The &amp; at the end of the command makes the command run in the 			background so that we can continue to the next command.</p>
+
+    <p>In the command above we are using &lt;$LOGPIPE to redirect the pipes stdout to the stdin of the tee command. The tee command ouputs in stdout and to the file $LOGFILE.</p>
+  </li>
+  <li>
+    <p>The exec command is simple. It is redirecting stdout and stderr to the named pipe. How? 1&gt;$LOGPIPE redirects stdout to the 		pipe and 2&gt;&amp;1 is redirecting stderr to stdout which is already connected to the pipe.</p>
+  </li>
+</ol>
+
+<p>Therefore the whole script is using a named pipe to store stderr and stdout in the logfile.</p>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/Hackerrank-Regex/">Regex and Hackerrank</a></h3>
-        <p class="post-meta">July 10, 2015</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/Masks-And-Pipes/">Masks And Pipes</a></h3>
-        <p class="post-meta">June 30, 2015</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/module.exports/">Module.exports</a></h3>
-        <p class="post-meta">June 17, 2015</p>
-        <p></p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'stochastic-musings';
+      var disqus_identifier = '/blog/2015/Masks-And-Pipes';
+      var disqus_title      = "Masks And Pipes";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
 
 </div>
 

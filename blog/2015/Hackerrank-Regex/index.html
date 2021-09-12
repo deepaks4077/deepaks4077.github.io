@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Deepak  Sharma | blank</title>
+<title>Deepak  Sharma | Regex and Hackerrank</title>
 <meta name="description" content="This might become useful over time">
 
 <!-- Open Graph -->
@@ -30,7 +30,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/blog/2015/Hackerrank-Regex/">
 <meta name="author" content="Deepak Sharma"/>
 
 <!-- JQuery -->
@@ -112,8 +112,6 @@
           
           
           
-          
-          
           <li class="nav-item ">
               <a class="nav-link" href="/projects/">
                 projects
@@ -150,38 +148,97 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>Stochastic Musings</h1>
-    <h2>A collection of my thoughts on software, artificial intelligence, and healthcare</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Regex and Hackerrank</h1>
+    <p class="post-meta">July 10, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>Regular expressions are one of the most versatile tools available. You can do some crazy things with regexing. Lately, I have been solving many problems on the regex subsection of <a href="https://www.hackerrank.com/domains/algorithms/regex">hackerrank</a>. The problems were fairly simple at first and I continued to code in java even though it probably would have been easier in perl or bash. But eventually the expressions got complex forcing me to abandon Java and settle with the regex alone. I used <a href="http://regexr.com/">this</a> website to check if my expressions were correct.</p>
+
+<p>I have added the expressions to a text file on github but for anyone following the blog I will add them here too:</p>
+
+<ul>
+  <li><a href="https://www.hackerrank.com/challenges/stack-exchange-scraper">stack-exchange-scraper question</a></li>
+</ul>
+
+<p>Print out the question id, summary and date in the order in which they appear on a stackexchange website.</p>
+
+<ol>
+  <li>
+    <p>regex for id: 
+    <code class="language-plaintext highlighter-rouge">
+    (?:(&lt;div (.*)?id="question-summary-))([0-9]+)(?:("(.*)?&gt;))
+   </code> 
+    The id is the text inside capturing group #3</p>
+  </li>
+  <li>
+    <p>regex for summary: 
+    <code class="language-plaintext highlighter-rouge">
+    (?:(&lt;h3&gt;.*?\[))(.*?)(?:\]) 
+   </code>
+    The summary is inside capturing group #2</p>
+  </li>
+  <li>
+    <p>regex for relativetime: 
+    <code class="language-plaintext highlighter-rouge">
+    (?:&lt;span.*?(?=class="relativetime").*?&gt;)([\w ]+?)(?:&lt;\/span&gt;) 
+   </code>
+    The relativetime is inside capturing group #1</p>
+  </li>
+</ol>
+
+<p>In Java after identifying the substrings using regex and adding them to an arraylist they can be printed out in the required format.</p>
+
+<ul>
+  <li><a href="https://www.hackerrank.com/challenges/detect-the-email-addresses">detect-the-email-address problem</a></li>
+</ul>
+
+<p>Output unique email addresses from given body of text.</p>
+
+<p>Fairly simple regex:</p>
+
+<p><code class="language-plaintext highlighter-rouge">([a-zA-Z][a-zA-Z0-9]*)@[a-zA-Z]{2,}\.[a-zA-Z]{2,}</code></p>
+
+<p>This question isn’t clear because a valid email can be a fairly complicated string. RFC 822 specifies a very broad set of rules for ‘valid’ email addresses. Check out <a href="http://ex-parrot.com/~pdw/Mail-RFC822-Address.html">this</a> website for a Perl regex which is RFC 822 compliant ;)</p>
+
+<ul>
+  <li><a href="https://www.hackerrank.com/challenges/detecting-valid-latitude-and-longitude">longitudes and latitudes</a></li>
+</ul>
+
+<p>Pretty complex regex :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\([\+\-]?(?!.*([\-\+\.,]\)))(?!\d{3,}\..*,)(?!0\d+\.,)(?!.*\.,)(?!9[1-9]\.)(?!90\.0*[1-9]0*,)(?!.*[\.\+\-].*[\.\+\-].*?,)(?!,.*[\.\+\-].*[\.\+\-].*?)(?!.*,\.)(?!.*,\d{4,}[\.]?)(?!.*,[2-9][0-9][0-9])(?!.*,1[8-9][1-9])(?!.*,180(\..*[1-9]+))(\d*\.?\d*,[\+\-]?\d*[\.]?\d*)\)
+</code></pre></div></div>
+
+<p>It worked on all the sample test cases but I have not tested this completely. The strategy is to start off with the most general case; \d+(.\d+)? for numbers and then start adding negative lookaheads to customize.</p>
+
+<p>For example the regex for the range [-90,+90] could be :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>^[\+\-]?(?!\d{3,})(?!9[1-9])(?!90\..*[1-9]+)(?!.*[\.\+\-]$)(?!.*[\+\-].*[\-\+])\d+(\.\d+)?
+</code></pre></div></div>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/Hackerrank-Regex/">Regex and Hackerrank</a></h3>
-        <p class="post-meta">July 10, 2015</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/Masks-And-Pipes/">Masks And Pipes</a></h3>
-        <p class="post-meta">June 30, 2015</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/module.exports/">Module.exports</a></h3>
-        <p class="post-meta">June 17, 2015</p>
-        <p></p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'stochastic-musings';
+      var disqus_identifier = '/blog/2015/Hackerrank-Regex';
+      var disqus_title      = "Regex and Hackerrank";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
 
 </div>
 

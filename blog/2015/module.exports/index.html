@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Deepak  Sharma | blank</title>
+<title>Deepak  Sharma | Module.exports</title>
 <meta name="description" content="This might become useful over time">
 
 <!-- Open Graph -->
@@ -30,7 +30,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/blog/2015/module.exports/">
 <meta name="author" content="Deepak Sharma"/>
 
 <!-- JQuery -->
@@ -112,8 +112,6 @@
           
           
           
-          
-          
           <li class="nav-item ">
               <a class="nav-link" href="/projects/">
                 projects
@@ -150,38 +148,81 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>Stochastic Musings</h1>
-    <h2>A collection of my thoughts on software, artificial intelligence, and healthcare</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Module.exports</h1>
+    <p class="post-meta">June 17, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>The first time I went about creating a node module I was confused how I would tell node which object to return. Creating modules in node is incredibly simple. Yet the difference between module.exports and exports is confusing. Some npm packages use the exports variable while some use module.exports to return the module object.</p>
+
+<p>So to clear things up for myself and for any reader who is just as confused as I was, here is the difference:</p>
+
+<h4 id="moduleexports">module.exports</h4>
+
+<p>When you require a module:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var app = require('module');
+</code></pre></div></div>
+
+<p>Node returns the ‘module.exports’ object. You can console.log(module) to see the exports object paramater.</p>
+
+<h4 id="exports">exports</h4>
+
+<p>‘exports’ by itself is just a global variable provided to you for convenience. Initially, the global ‘exports’ variable references the same memory location as module.exports.</p>
+
+<p>So if you assign ‘exports’ :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exports = //your module object
+</code></pre></div></div>
+
+<p>You are changing the object <strong>exports</strong>. Javascript <em>does not pass by reference at all</em>. There is no way to pass the whole object in javascript because variables dont hold objects, they hold the values of the references to those objects. That is the value of the address of the object.</p>
+
+<p>So if I do this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exports.a = //your module object
+</code></pre></div></div>
+
+<p>Then require will work:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var app = require('module');
+console.log(app.a)//prints the contents of exports.a and not 'undefined'
+</code></pre></div></div>
+
+<p>The ‘.’ operator dereferences the object and adds an ‘a’ property.</p>
+
+<h4 id="best-practice">Best practice</h4>
+
+<p>So that is the only way I can return my module using exports ‘provided I do not use module.exports anywhere in the code’. It is easy to remember the difference if you understand it.</p>
+
+<p>However, the best and most common practice right now seems to be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module.exports = exports = //your module object
+</code></pre></div></div>
+
+<p>OR just using module.exports.</p>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/Hackerrank-Regex/">Regex and Hackerrank</a></h3>
-        <p class="post-meta">July 10, 2015</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/Masks-And-Pipes/">Masks And Pipes</a></h3>
-        <p class="post-meta">June 30, 2015</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2015/module.exports/">Module.exports</a></h3>
-        <p class="post-meta">June 17, 2015</p>
-        <p></p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'stochastic-musings';
+      var disqus_identifier = '/blog/2015/module.exports';
+      var disqus_title      = "Module.exports";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
 
 </div>
 
