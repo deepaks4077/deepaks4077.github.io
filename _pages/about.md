@@ -2,7 +2,7 @@
 layout: about
 permalink: /
 title: about
-description: Machine Learning • School Of Computer Science • <a href="http://www.mcgill.ca"> McGill University </a> and <a href = "https://mila.quebec/en/">MILA</a>.
+description: Machine Learning • AI Agents • <a href="https://www.microsoft.com/en-ca/power-platform/products/power-apps"> Microsoft PowerApps.
 
 profile:
   align: right
