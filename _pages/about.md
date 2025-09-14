@@ -2,7 +2,7 @@
 layout: about
 permalink: /
 title: about
-description: Machine Learning • AI Agents • <a href="https://www.microsoft.com/en-ca/power-platform/products/power-apps"> Microsoft PowerApps.
+description: Applied Scientist @ Microsoft • AI Agents • AI Evals • Post-training LLMs
 
 profile:
   align: right
@@ -12,13 +12,15 @@ news: true
 social: true
 ---
 
-Hi, I am a Computer Science Master's student at  <a href="https://www.cs.mcgill.ca/">McGill University</a> and <a href = "https://mila.quebec/en/">MILA</a>, working under <a href="https://www.cs.mcgill.ca/~jpineau/">Dr. Joelle Pineau</a> and <a href="https://audurand.wordpress.com/">Dr. Audrey Durand</a>. 
+Hi, I am an Applied Scientist at Microsoft, working on AI Agents to automate tasks in large businesses. 
 
 
-<p><strong>Research Interests</strong>
-<br> My research interests are primarily motivated by the application area that I am focussing on, e.g. model interpretability for ML applications in medicine. I am interested in machine learning interpretability, graph representation learning, model uncertainty, active learning, and causal inference.
-<br>
-<br>I am passionate about their applications to improve human productivity and decision making in domains like healthcare and finance.
+<p><strong>Current Focus</strong>
+<br> I focus on developing AI Agents that can reliably automate complex business processes. My current responsibilities include AI Evals (offline and online), fine-tuning LLMs. I am also exploring how I can make AI Agent tasks verifiable for reinforcement learning training for multi-turn, multi-tool use scenarios.
+</p>
+
+<p><strong>Research Background</strong>
+<br> I did ML research during my Master's at <a href="https://www.cs.mcgill.ca/">McGill University</a> and <a href = "https://mila.quebec/en/">MILA</a>, where I worked under <a href="https://www.cs.mcgill.ca/~jpineau/">Dr. Joelle Pineau</a> and <a href="https://audur2.ift.ulaval.ca/">Dr. Audrey Durand</a>. I primarily focussed on model interpretability for ML applications in healthcare. I also worked on graph representation learning, model uncertainty, active learning, and causal inference, with applications aimed at improving human productivity and decision making in domains like healthcare and finance.
 </p>
 
 <p><strong>Contact</strong>
