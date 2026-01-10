@@ -1,7 +1,7 @@
 ---
 layout: about
 permalink: /
-title: about
+title: About
 description: Applied Scientist @ Microsoft • AI Agents • AI Evals • Post-training LLMs
 
 profile:
