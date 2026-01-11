@@ -1,0 +1,70 @@
+---
+---
+@string{arx = {arXiv}}
+@string{sub = {In Submission}}
+@string{icml = {International Conference on Machine Learning (ICML)}}
+@string{neurips = {NeurIPS}}
+
+
+@misc{ref:Sharma2020,
+    title={Deep interpretability for GWAS}, 
+    author={Deepak Sharma and Audrey Durand and Marc-André Legault and Louis-Philippe Lemieux Perreault and Audrey Lemaçon and Marie-Pierre Dubé and Joelle Pineau},
+    year={2020},
+    note={In Workshop on ML Interpretability for Scientific Discovery},
+    annote=icml,
+    month={07},
+    year={2020},
+    html={https://sites.google.com/view/mli4sd-icml2020/program},
+    arxiv={2007.01516},
+    abstract={Genome-Wide Association Studies are typically conducted using linear models to find genetic variants associated with common diseases. In these studies, association testing is done on a variant-by-variant basis, possibly missing out on non-linear interaction effects between variants. Deep networks can be used to model these interactions, but they are difficult to train and interpret on large genetic datasets. We propose a method that uses the gradient based deep interpretability technique named DeepLIFT to show that known diabetes genetic risk factors can be identified using deep models along with possibly novel associations.
+},
+    abbr={ICML}
+}
+
+@misc{ref:Islam2019,
+    title={Off-Policy Policy Gradient Algorithms by Constraining the State Distribution Shift}, 
+    author={Riashat Islam and Komal K. Teru and Deepak Sharma and Joelle Pineau},
+    month={12},
+    year={2019},
+    note={In Workshop on Deep Reinforcement Learning},
+    annote=neurips,
+    html={https://sites.google.com/view/deep-rl-workshop-neurips-2019/home},
+    arxiv={1911.06970},
+    abstract={Off-policy deep reinforcement learning (RL) algorithms are incapable of learning solely from batch offline data without online interactions with the environment, due to the phenomenon
+              known as \textit{extrapolation error}. This is often due to past data available in the replay buffer that may be quite different from the data distribution under the current policy. We
+              argue that most off-policy learning methods fundamentally suffer from a \textit{state distribution shift} due to the mismatch between the state visitation distribution of the data
+              collected by the behavior and target policies. This data distribution shift between current and past samples can significantly impact the performance of most modern off-policy based
+              policy optimization algorithms. In this work, we first do a systematic analysis of state distribution mismatch in off-policy learning, and then develop a novel off-policy policy
+              optimization method to constraint the state distribution shift. To do this, we first estimate the state distribution based on features of the state, using a density estimator and then
+              develop a novel constrained off-policy gradient objective that minimizes the state distribution shift. Our experimental results on continuous control tasks show that minimizing this
+              distribution mismatch can significantly improve performance in most popular practical off-policy policy gradient algorithms.},
+    abbr={NeurIPS}
+}
+
+@inproceedings{ref:Reddy2021,
+    title={Benchmarking Bias Mitigation Algorithms in Representation Learning through Fairness Metrics},
+    author={Charan Reddy and Deepak Sharma and Soroush Mehri and Adriana Romero Soriano and Samira Shabanian and Sina Honari},
+    booktitle={Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks},
+    editor={J. Vanschoren and S. Yeung},
+    volume={1},
+    month={12},
+    year={2021},
+    pdf={https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/file/2723d092b63885e0d7c260cc007e8b9d-Paper-round1.pdf},
+    html={https://openreview.net/forum?id=OTnqQUEwPKu},
+    abbr={NeurIPS},
+    abstract={With the recent expanding attention of machine learning researchers and practitioners to fairness, there is a void of a common framework to analyze and compare the capabilities of proposed models in deep representation learning. In this paper, we evaluate different fairness methods trained with deep neural networks on a common synthetic dataset and a real-world dataset to obtain better insights on how these methods work. In particular, we train about 3000 different models in various setups, including imbalanced and correlated data configurations, to verify the limits of the current models and better understand in which setups they are subject to failure. Our results show that the bias of models increase as datasets become more imbalanced or datasets attributes become more correlated, the level of dominance of correlated sensitive dataset features impact bias, and the sensitive information remains in the latent representation even when bias-mitigation algorithms are applied. Overall, we present a dataset, propose various challenging evaluation setups, and rigorously evaluate recent promising bias-mitigation algorithms in a common framework and publicly release this benchmark, hoping the research community would take it as a common entry point for fair deep learning.}
+}
+
+@article{bertin2023recover,
+    title={RECOVER identifies synergistic drug combinations in vitro through sequential model optimization},
+    author={Bertin, Paul and Rector-Brooks, Jarrid and Sharma, Deepak and Gaudelet, Thomas and Anighoro, Andrew and Gross, Torsten and Mart{\'\i}nez-Pe{\~n}a, Francisco and Tang, Eileen L. and Suraj, M.S. and Regep, Cristian and Hayter, Jeremy B.R. and Korablyov, Maksym and Valiante, Nicholas and van der Sloot, Almer and Tyers, Mike and Roberts, Charles E.S. and Bronstein, Michael M. and Lairson, Luke L. and Taylor-King, Jake P. and Bengio, Yoshua},
+    journal={Cell Reports Methods},
+    volume={3},
+    number={10},
+    month={10},
+    year={2023},
+    doi={10.1016/j.crmeth.2023.100599},
+    html={https://doi.org/10.1016/j.crmeth.2023.100599},
+    abstract={For large libraries of small molecules, exhaustive combinatorial chemical screens become infeasible to perform when considering a range of disease models, assay conditions, and dose ranges. Deep learning models have achieved state-of-the-art results in silico for the prediction of synergy scores. However, databases of drug combinations are biased toward synergistic agents and results do not generalize out of distribution. During 5 rounds of experimentation, we employ sequential model optimization with a deep learning model to select drug combinations increasingly enriched for synergism and active against a cancer cell line, evaluating only ~5% of the total search space.},
+    abbr={Cell}
+}
