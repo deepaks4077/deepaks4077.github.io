@@ -146,13 +146,6 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
-  - index.html
-  - projects/
-  - publications/
-  - news/
-  - blog/
-  - assets/css/main.css
-  - assets/css/main.css.map
 keep_files:
   - CNAME
   - .nojekyll
