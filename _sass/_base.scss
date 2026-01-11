@@ -776,7 +776,8 @@ footer.sticky-bottom {
           }
         }
 
-        > em {
+        > em,
+        > .author-self {
           border-bottom: 1px solid;
           font-style: normal;
         }
