@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to agents working in this repository.
 
 ## Project Overview
 
@@ -79,8 +79,9 @@ The site uses specific versions of frontend libraries defined in `_config.yml`:
 - jQuery 3.5.1
 - MathJax 3.1.2
 
-## Critical Contribution Instructions
-DO NOT INCLUDE ANY MENTION of Claude in the git commit messages.
+## Commit Messages
+- Do not mention Claude in commit messages
+- Keep messages concise and descriptive of the change intent
 
 ## Hosting
 This site appears to be designed for GitHub Pages deployment, with CNAME file present for custom domain configuration.
