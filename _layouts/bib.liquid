@@ -124,42 +124,27 @@
             {% endfor %}
           {%- endif -%}
 
-          <!-- Add separator before this author -->
-          {%- if current_index > 0 -%}
-            {% if current_index == last_index and hidden_count > 0 %}
-              <!-- Separator handled by more-authors span -->
-            {% elsif current_index == last_index and hidden_count == 0 %}
-              {% if author_array_size > 2 %}, {% endif %}and
-            {%- elsif author_array_size > 2 -%}
-              ,
-            {%- endif -%}
-          {%- endif -%}
-
           <!-- Render author name -->
           {%- if author_is_self -%}
             <span class="author-self">
               {{- author.first }}
-              {{ author_last_html -}}
+              {{ author_last_html | strip -}}
             </span>
           {%- else -%}
             {%- if coauthor_url -%}
-              <a href="{{ coauthor_url }}">
-                {{- author.first }}
-                {{ author_last_html -}}
-              </a>
+              <a href="{{ coauthor_url }}">{{- author.first }} {{ author_last_html | strip -}}</a>
             {%- else -%}
-              {{- author.first }}
-              {{ author_last_html -}}
-            {% endif %}
+              {{- author.first }} {{ author_last_html | strip -}}
+            {%- endif -%}
           {%- endif -%}
 
           <!-- After self, show "more authors" button if there are hidden authors -->
-          {% if author_is_self and hidden_count > 0 %}
-            {% assign more_authors_hide = hidden_count | append: ' more author' %}
-            {% if hidden_count > 1 %}
-              {% assign more_authors_hide = more_authors_hide | append: 's' %}
-            {% endif %}
-            ,
+          {%- if author_is_self and hidden_count > 0 -%}
+            {%- assign more_authors_hide = hidden_count | append: ' more author' -%}
+            {%- if hidden_count > 1 -%}
+              {%- assign more_authors_hide = more_authors_hide | append: 's' -%}
+            {%- endif -%}
+            {{- ", " -}}
             <span
               class="more-authors"
               title="click to view {{ more_authors_hide }}"
@@ -178,7 +163,18 @@
             >
               {{- more_authors_hide -}}
             </span>
-            , and {% endif %}
+            {{- ", and " -}}
+          {%- elsif current_index < last_index -%}
+            {%- if current_index == last_index | minus: 1 -%}
+              {%- if author_array_size == 2 -%}
+                {{- " and " -}}
+              {%- else -%}
+                {{- ", and " -}}
+              {%- endif -%}
+            {%- else -%}
+              {{- ", " -}}
+            {%- endif -%}
+          {%- endif -%}
         {% endif %}
       {% endfor %}
       {% if entry.annotation %}
@@ -226,8 +222,13 @@
       {{ entrytype | strip }}
     </div>
     <div class="periodical">
-      {{ entry.note | strip }}
+      <em>{{ entry.note | strip }}</em>
     </div>
+    {% if entry.annote %}
+    <div class="periodical">
+      <em>{{ entry.annote | strip }}</em>
+    </div>
+    {% endif %}
     {% if entrymonth or entryyear %}
     <div class="periodical">
       {{ entrymonth }}{{ entryyear }}

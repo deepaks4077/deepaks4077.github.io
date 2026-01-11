@@ -4,4 +4,4 @@
 set -o errexit -o pipefail -o noclobber -o nounset
 
 jekyll clean
-jekyll build
+SASS_SILENCE_DEPRECATIONS=import,global-builtin jekyll build --incremental --watch

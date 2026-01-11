@@ -764,9 +764,11 @@ footer.sticky-bottom {
 
       .title {
         font-weight: bolder;
+        margin-bottom: 0.25rem;
       }
 
       .author {
+        margin-bottom: 0.25rem;
         a {
           border-bottom: 1px dashed var(--global-theme-color);
 
@@ -792,6 +794,10 @@ footer.sticky-bottom {
             border-bottom: 1px dashed var(--global-text-color);
           }
         }
+      }
+
+      .periodical {
+        margin-bottom: 0.25rem;
       }
 
       .links {
