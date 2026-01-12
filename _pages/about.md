@@ -8,7 +8,7 @@ profile:
   align: right
   image: linkedinphoto.jpeg
 
-news: true
+news: false
 social: true
 ---
 
