@@ -1,87 +1,73 @@
 # AGENTS.md
 
-This file provides guidance to agents working in this repository.
-
 ## Project Overview
+- Personal website for Deepak Sharma built with Jekyll using the al-folio theme.
+- Hosted via GitHub Pages with automated deployment from `main`.
 
-This is a personal website for Deepak Sharma, an Applied Scientist at Microsoft. It is built with Jekyll, using the al-folio theme.
+## Setup
+### Prerequisites
+- Ruby + Bundler (for Jekyll builds)
+- Docker + Docker Compose (optional local dev)
+- Node.js (optional, for Prettier)
 
-## Development Commands
+### Install & Run
+- Install Ruby dependencies: `bundle install`
+- Local dev server: `bundle exec jekyll serve` (http://localhost:4000)
+- Build site: `bundle exec jekyll build`
+- Docker dev: `docker compose pull` then `docker compose up` (http://localhost:8080)
 
-### Building and Development
-- **Build the site**: `./build.sh` or manually:
-  ```bash
-  jekyll clean
-  jekyll build
-  ```
-- **Local development**: `jekyll serve` (serves locally at http://localhost:4000)
-- **Install dependencies**: `bundle install`
+## Repo Structure
+- `_config.yml`: main site configuration (URL, metadata, features)
+- `_pages/`: top-level pages (about, blog, projects, publications)
+- `_posts/`: blog posts (`YYYY-MM-DD-title.md`)
+- `_projects/`: project pages
+- `_bibliography/`: publications (`papers.bib`, `preprints.bib`)
+- `_data/`: structured data (`socials.yml`, `coauthors.yml`, etc.)
+- `_layouts/`, `_includes/`: Liquid templates
+- `_sass/`: theme styling
+- `assets/`: images, JS, CSS, PDFs
+- `bin/`: helper scripts (e.g., `bin/deploy`)
 
-### Key Build Files
-- `Gemfile`: Ruby dependencies including Jekyll plugins
-- `build.sh`: Main build script that cleans and builds the site
-- `_config.yml`: Main Jekyll configuration
+## Key Configuration
+- `url` is `https://deepaks4077.github.io` and `baseurl` is empty (root served at `/`).
+- Favicon uses `linkedinphoto.jpeg` via `icon:` in `_config.yml`.
+- Global theme color set to red in `_sass/_themes.scss`.
+- Blog title/description configured in `_config.yml` and the page title in `_pages/blog.md`.
 
-## Architecture and Structure
+## Common Content Workflows
+- About page content: `_pages/about.md` (uses `subtitle:` in frontmatter).
+- Blog posts: `_posts/YYYY-MM-DD-title.md` (only keep curated posts).
+- Projects: `_projects/*.md`.
+- Publications: update `_bibliography/papers.bib` or `_bibliography/preprints.bib`.
+- Social links: `_data/socials.yml` and `*_username` fields in `_config.yml`.
 
-### Site Configuration (`_config.yml`)
-- **Personal info**: Name, email, social links configured at the top
-- **Collections**: Two main collections - `news` and `projects`
-- **Plugins**: Uses Jekyll Scholar for bibliography, Jekyll Paginate for blog pagination, and other Jekyll plugins
-- **Theme features**: Dark mode, MathJax support, image zoom, project categorization
+## Publications Rendering
+- Template: `_layouts/bib.liquid`.
+- Author list shows all authors up to and including Deepak Sharma (underlined), hides middle authors behind “more authors”, and always shows the last author.
+- Venue appears above the date; for workshop entries stored in `note`, the note is treated as the venue and the date appears below it.
+- Spacing between title, authors, venue, and date is defined in `_pages/publications.md` via inline styles.
 
-### Content Structure
-- `_pages/`: Main site pages (about.md, projects.md, publications.md)
-- `_posts/`: Blog posts in markdown format
-- `_projects/`: Individual project pages
-- `_news/`: News/announcement items
-- `_bibliography/`: BibTeX files for publications (papers.bib, preprints.bib)
-- `_data/`: YAML data files (coauthors.yml)
+## Styling & Theme
+- Global theme color: `_sass/_themes.scss`.
+- Layout + base styling: `_sass/_layout.scss`, `_sass/_base.scss`.
+- Main stylesheet entry: `assets/css/main.scss`.
 
-### Layout System
-- `_layouts/`: HTML templates (about.html, post.html, page.html, etc.)
-- `_includes/`: Reusable components (header.html, footer.html, social.html, etc.)
-- `_sass/`: SCSS stylesheets organized by component
+## Validation
+- Prefer local preview (`bundle exec jekyll serve`) before committing.
+- Jekyll rebuilds automatically after edits; refresh browser to verify.
+- Ensure YAML indentation is 2 spaces and BibTeX syntax stays valid.
 
-### Assets
-- `assets/css/main.scss`: Main stylesheet entry point
-- `assets/js/`: JavaScript files for features like dark mode, zoom, masonry layout
-- `assets/img/`: Images including profile photos and project screenshots
-- `assets/pdf/`: PDF files for downloads
+## Deployment
+- GitHub Actions deploys from `main` to `gh-pages`.
+- Do not edit `gh-pages` or `_site/` directly.
+- `bin/deploy` performs a manual build + deploy (destructive; use with care).
+- `CNAME` controls the custom domain.
 
-### Key Features
-- **Bibliography integration**: Uses Jekyll Scholar plugin with BibTeX files
-- **Dark mode**: Enabled with JavaScript toggle
-- **Project showcase**: Categorized projects with image previews
-- **News section**: Recent announcements and updates
-- **Social integration**: Links to GitHub, Twitter, LinkedIn, Google Scholar
-- **Math rendering**: MathJax support for mathematical expressions
-- **Image zoom**: Medium-style image zoom on click
+## Formatting
+- Optional: `npx prettier . --write` (uses `package.json` devDependencies).
 
-## Content Management
-
-### Adding Content
-- **New blog post**: Create `.md` file in `_posts/` with YAML front matter
-- **New project**: Add `.markdown` file to `_projects/` directory
-- **News items**: Add `.md` file to `_news/` directory
-- **Publications**: Add entries to `_bibliography/papers.bib` or `_bibliography/preprints.bib`
-
-### Configuration Notes
-- Site uses `github.com/deepaks4077` as the GitHub username
-- Scholar ID: `EGRYwWQAAAAJ`
-- News items are limited to 5 recent items (`news_limit: 5`)
-- Blog uses permalink structure `/blog/:year/:title/`
-
-## Dependencies and Versions
-The site uses specific versions of frontend libraries defined in `_config.yml`:
-- Bootstrap 4.5.2
-- FontAwesome 5.14.0
-- jQuery 3.5.1
-- MathJax 3.1.2
-
-## Commit Messages
-- Do not mention Claude in commit messages
-- Keep messages concise and descriptive of the change intent
-
-## Hosting
-This site appears to be designed for GitHub Pages deployment, with CNAME file present for custom domain configuration.
+## Contribution Guardrails
+- Avoid committing generated `_site/` or `vendor/` output.
+- Keep `baseurl:` in `_config.yml` (empty is ok, do not delete).
+- Do not add secrets or private keys.
+- The Jupyter notebook plugin is not enabled; avoid notebook-specific tags unless re-enabled.

@@ -1,1 +1,0 @@
-$(document).ready((function(){var e=$("pre");$(".example-code-link").click((function(e){e.preventDefault(),$(this).parent().next().slideToggle()})),e.filter('[class*="js"]').find("code").addClass("language-javascript"),e.filter(".css").find("code").addClass("language-css")}));

@@ -16,8 +16,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-blog",
-          title: "Blog",
+        },{id: "nav-stochastic-musings",
+          title: "Stochastic Musings",
           description: "",
           section: "Navigation",
           handler: () => {
@@ -30,25 +30,54 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "books-the-godfather",
+        },{id: "post-regex-and-hackerrank",
+        
+          title: "Regex and Hackerrank",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/Hackerrank-Regex/";
+          
+        },
+      },{id: "post-masks-and-pipes",
+        
+          title: "Masks And Pipes",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/Masks-And-Pipes/";
+          
+        },
+      },{id: "post-module-exports",
+        
+          title: "Module.exports",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/module.exports/";
+          
+        },
+      },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-i-graduated-from-mcgill-university-with-a-b-eng-in-software",
-          title: 'I graduated from Mcgill University with a B.Eng. in Software.',
+            },},{id: "news-a-simple-inline-announcement",
+          title: 'A simple inline announcement.',
           description: "",
-          section: "News",},{id: "news-started-working-for-citibank-as-a-software-developer",
-          title: 'Started working for Citibank as a Software Developer.',
+          section: "News",},{id: "news-a-long-announcement-with-details",
+          title: 'A long announcement with details',
           description: "",
-          section: "News",},{id: "news-rotated-into-the-g10-rates-pricing-team-at-citi",
-          title: 'Rotated into the G10 Rates Pricing team at Citi.',
-          description: "",
-          section: "News",},{id: "news-started-working-as-an-applied-scientist-at-microsoft",
-          title: 'Started working as an Applied Scientist at Microsoft.',
-          description: "",
-          section: "News",},{id: "news-designing-evaluations-and-fine-tuning-llms-for-frontier-business-agents",
-          title: 'Designing evaluations and fine-tuning LLMs for Frontier Business Agents.',
+          section: "News",handler: () => {
+              window.location.href = "/news/announcement_2/";
+            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
+          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
@@ -65,6 +94,16 @@ ninja.data = [{
           description: "Benchmarking Bias Mitigation Algorithms in Representation Learning through Fairness Metrics",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
+            },},{id: "projects-active-learning-using-augmented-data-from-gans-vaes",
+          title: 'Active Learning using Augmented Data from GANs/VAEs',
+          description: "",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_project/";
+            },},{id: "projects-reproducibility-project-for-iclr-2019",
+          title: 'Reproducibility project for ICLR 2019',
+          description: "We reproduced and improved on the results of the paper Practical lossless compression using bits-back coding, published at ICLR 2019.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_project/";
             },},{id: "projects-project-6",
           title: 'project 6',
           description: "a project with no image",
