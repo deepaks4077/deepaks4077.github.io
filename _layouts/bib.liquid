@@ -71,11 +71,12 @@
       {% endif %}
       {% assign last_index = author_array_size | minus: 1 %}
       {% assign has_last_author = last_index > self_index %}
+      {% assign self_limit = self_index | plus: 1 %}
       {% assign middle_count = 0 %}
       {% if has_last_author %}
         {% assign middle_count = last_index | minus: self_index | minus: 1 %}
       {% endif %}
-      {% assign visible_count = self_index | plus: 1 %}
+      {% assign visible_count = self_limit %}
       {% if middle_count > 0 %}
         {% assign visible_count = visible_count | plus: 1 %}
       {% endif %}
@@ -84,7 +85,7 @@
       {% endif %}
       {% assign rendered_items = 0 %}
 
-      {%- for author in entry.author_array limit: self_index | plus: 1 -%}
+      {%- for author in entry.author_array limit: self_limit -%}
         {% if rendered_items > 0 %}
           {% assign remaining = visible_count | minus: rendered_items %}
           {% if remaining == 1 %} and {% else %}, {% endif %}
