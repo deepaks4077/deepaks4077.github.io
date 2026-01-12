@@ -252,11 +252,16 @@
       {% include hook/bib.liquid %}
     {% endif %}
     {% assign entrytype_text = entrytype | strip_html | strip %}
-    {% capture periodical_venue %}{{ entrytype }}{% endcapture %}
+    {% assign venue_text = entrytype %}
+    {% assign note_text = entry.note %}
+    {% if entrytype_text == '' and entry.note %}
+      {% assign venue_text = entry.note %}
+      {% assign note_text = '' %}
+    {% endif %}
     {% capture periodical_date %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
-    {% if periodical_venue | strip != '' %}
+    {% if venue_text | strip != '' %}
       <div class="periodical periodical-venue">
-        {{ periodical_venue | strip }}
+        {{ venue_text | strip }}
       </div>
     {% endif %}
     {% if periodical_date | strip != '' %}
@@ -264,9 +269,9 @@
         {{ periodical_date | strip }}
       </div>
     {% endif %}
-    {% if entry.note %}
+    {% if note_text %}
       <div class="periodical">
-        {{ entry.note | strip }}
+        {{ note_text | strip }}
       </div>
     {% endif %}
 
