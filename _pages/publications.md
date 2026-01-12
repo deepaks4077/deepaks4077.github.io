@@ -15,6 +15,7 @@ _styles: >
 ---
 
 {% if pages.ppr_years.size > 0 %}
+
 <div class="publications">
     <h1>Manuscripts <small>&</small> Preprints</h1>
 
@@ -22,9 +23,9 @@ _styles: >
       <h2 class="year">{{y}}</h2>
       {% bibliography -f preprints -q @*[year={{y}}]* %}
     {% endfor %}
+
 </div>
 {% endif %}
-
 
 <div class="publications">
 

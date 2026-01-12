@@ -13,8 +13,7 @@ news: false
 social: true
 ---
 
-Hi, I am an Applied Scientist at Microsoft, working on AI Agents to automate tasks in large businesses. 
-
+Hi, I am an Applied Scientist at Microsoft, working on AI Agents to automate tasks in large businesses.
 
 <p><strong>Current Focus</strong>
 <br> I own the AI Evals and quality strategy for our document-to-structured data extraction agent that powers <a href="https://learn.microsoft.com/en-us/power-apps/user/form-filling-assistance">Form Fill in PowerApps</a> - leading synthetic data generation pipeline design, evals & metric design, error analysis, A/B experimentation, and curating data for and running SFT experiments. I am also exploring how I can make its tasks verifiable for reinforcement learning training for multi-turn, multi-tool use scenarios.
