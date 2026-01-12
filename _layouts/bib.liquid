@@ -52,6 +52,10 @@
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
+      {% assign preferred_authors = '' | split: '' %}
+      {% if entry.visible_authors %}
+        {% assign preferred_authors = entry.visible_authors | split: ';' %}
+      {% endif %}
       {% assign self_index = -1 %}
       {% for author in entry.author_array %}
         {% assign author_is_self = false %}
@@ -74,26 +78,75 @@
         {% assign self_index = author_array_size | minus: 1 %}
       {% endif %}
       {% assign last_index = author_array_size | minus: 1 %}
-      {% assign has_last_author = last_index > self_index %}
-      {% assign self_limit = self_index | plus: 1 %}
-      {% assign middle_count = 0 %}
-      {% if has_last_author %}
-        {% assign middle_count = last_index | minus: self_index | minus: 1 %}
+      {% assign hidden_authors_count = 0 %}
+      {% assign visible_authors_count = 0 %}
+
+      {% for author in entry.author_array %}
+        {% assign author_index = forloop.index0 %}
+        {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+        {%- assign author_last_normalized = author_last_name | downcase | remove_accents -%}
+        {%- assign author_first_normalized = author.first | downcase | replace: '.', '' -%}
+        {% assign author_full_normalized = author_first_normalized | append: ' ' | append: author_last_normalized %}
+        {% assign author_is_preferred = false %}
+        {% for preferred_author in preferred_authors %}
+          {% assign preferred_normalized = preferred_author | strip | downcase | replace: '.', '' %}
+          {% if preferred_normalized == author_full_normalized %}
+            {% assign author_is_preferred = true %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+        {% assign author_is_visible = false %}
+        {% if author_index <= self_index or author_index == last_index or author_is_preferred %}
+          {% assign author_is_visible = true %}
+        {% endif %}
+        {% if author_is_visible %}
+          {% assign visible_authors_count = visible_authors_count | plus: 1 %}
+        {% else %}
+          {% assign hidden_authors_count = hidden_authors_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign hidden_authors_show = '' %}
+      {% assign hidden_index = 0 %}
+      {% if hidden_authors_count > 0 %}
+        {% for author in entry.author_array %}
+          {% assign author_index = forloop.index0 %}
+          {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+          {%- assign author_last_normalized = author_last_name | downcase | remove_accents -%}
+          {%- assign author_first_normalized = author.first | downcase | replace: '.', '' -%}
+          {% assign author_full_normalized = author_first_normalized | append: ' ' | append: author_last_normalized %}
+          {% assign author_is_preferred = false %}
+          {% for preferred_author in preferred_authors %}
+            {% assign preferred_normalized = preferred_author | strip | downcase | replace: '.', '' %}
+            {% if preferred_normalized == author_full_normalized %}
+              {% assign author_is_preferred = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% assign author_is_visible = false %}
+          {% if author_index <= self_index or author_index == last_index or author_is_preferred %}
+            {% assign author_is_visible = true %}
+          {% endif %}
+          {% if author_is_visible == false %}
+            {% assign hidden_index = hidden_index | plus: 1 %}
+            {% assign hidden_authors_show = hidden_authors_show | append: author.first | append: ' ' | append: author.last %}
+            {% if hidden_index < hidden_authors_count %}
+              {% assign hidden_authors_show = hidden_authors_show | append: ', ' %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% assign hidden_authors_show = hidden_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' %}
       {% endif %}
-      {% assign visible_count = self_limit %}
-      {% if middle_count > 0 %}
-        {% assign visible_count = visible_count | plus: 1 %}
-      {% endif %}
-      {% if has_last_author %}
-        {% assign visible_count = visible_count | plus: 1 %}
+
+      {% assign visible_items_total = visible_authors_count %}
+      {% if hidden_authors_count > 0 %}
+        {% assign visible_items_total = visible_items_total | plus: 1 %}
       {% endif %}
       {% assign rendered_items = 0 %}
+      {% assign placeholder_inserted = false %}
 
-      {%- for author in entry.author_array limit: self_limit -%}
-        {% if rendered_items > 0 %}
-          {% assign remaining = visible_count | minus: rendered_items %}
-          {% if remaining == 1 %} and {% else %}, {% endif %}
-        {% endif %}
+      {% for author in entry.author_array %}
+        {% assign author_index = forloop.index0 %}
         {% assign author_is_self = false %}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
         {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
@@ -101,98 +154,30 @@
         {%- assign author_first_normalized = author.first | downcase | replace: '.', '' -%}
         {%- assign scholar_last_normalized = site.scholar.last_name | join: ',' | downcase | remove_accents -%}
         {%- assign scholar_first_normalized = site.scholar.first_name | join: ',' | downcase | replace: '.', '' -%}
+        {% assign author_full_normalized = author_first_normalized | append: ' ' | append: author_last_normalized %}
         {% if scholar_last_normalized contains author_last_normalized %}
           {% if scholar_first_normalized contains author_first_normalized %}
             {% assign author_is_self = true %}
           {% endif %}
         {%- endif -%}
-        {% assign coauthor_url = null %}
-        {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
-        {% if site.data.coauthors[clean_last_name] %}
-          {%- for coauthor in site.data.coauthors[clean_last_name] -%}
-            {% if coauthor.firstname contains author.first %}
-              {%- assign coauthor_url = coauthor.url -%}
-              {% break %}
-            {%- endif -%}
-          {% endfor %}
-        {%- endif -%}
-
-        {%- if author_is_self -%}
-          <u>
-            {{- author.first }}
-            {{ author_last_html -}}
-          </u>
-        {%- else -%}
-          {%- if coauthor_url -%}
-            <a href="{{ coauthor_url }}">
-              {{- author.first }}
-              {{ author_last_html -}}
-            </a>
-          {%- else -%}
-            {{- author.first }}
-            {{ author_last_html -}}
+        {% assign author_is_preferred = false %}
+        {% for preferred_author in preferred_authors %}
+          {% assign preferred_normalized = preferred_author | strip | downcase | replace: '.', '' %}
+          {% if preferred_normalized == author_full_normalized %}
+            {% assign author_is_preferred = true %}
+            {% break %}
           {% endif %}
-        {%- endif -%}
-        {% assign rendered_items = rendered_items | plus: 1 %}
-      {% endfor %}
+        {% endfor %}
+        {% assign author_is_visible = false %}
+        {% if author_index <= self_index or author_index == last_index or author_is_preferred %}
+          {% assign author_is_visible = true %}
+        {% endif %}
 
-      {% if middle_count > 0 %}
-        {% if rendered_items > 0 %}
-          {% assign remaining = visible_count | minus: rendered_items %}
-          {% if remaining == 1 %} and {% else %}, {% endif %}
-        {% endif %}
-        {% assign more_authors_hide = middle_count | append: ' more author' %}
-        {% if middle_count > 1 %}
-          {% assign more_authors_hide = more_authors_hide | append: 's' %}
-        {% endif %}
-        {% assign more_authors_show = '' %}
-        {% assign more_authors_offset = self_index | plus: 1 %}
-        {%- for author in entry.author_array offset: more_authors_offset limit: middle_count -%}
-          {% assign more_authors_show = more_authors_show | append: author.first | append: ' ' | append: author.last %}
-          {% unless forloop.last %}
-            {% assign more_authors_show = more_authors_show | append: ', ' %}
-          {% endunless %}
-        {%- endfor -%}
-        {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        <span
-          class="more-authors"
-          title="click to view {{ more_authors_hide }}"
-          onclick="
-              var element = $(this);
-              element.attr('title', '');
-              var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
-              var cursorPosition = 0;
-              var textAdder = setInterval(function(){
-                element.html(more_authors_text.substring(0, cursorPosition + 1));
-                if (++cursorPosition == more_authors_text.length){
-                  clearInterval(textAdder);
-                }
-            }, '{{ site.more_authors_animation_delay }}');
-          "
-        >
-          {{- more_authors_hide -}}
-        </span>
-        {% assign rendered_items = rendered_items | plus: 1 %}
-      {% endif %}
-
-      {% if has_last_author %}
-        {% if rendered_items > 0 %}
-          {% assign remaining = visible_count | minus: rendered_items %}
-          {% if remaining == 1 %} and {% else %}, {% endif %}
-        {% endif %}
-        {%- for author in entry.author_array offset: last_index limit: 1 -%}
-          {% assign author_is_self = false %}
-          {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
-          {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-          {%- assign author_last_normalized = author_last_name | downcase | remove_accents -%}
-          {%- assign author_first_normalized = author.first | downcase | replace: '.', '' -%}
-          {%- assign scholar_last_normalized = site.scholar.last_name | join: ',' | downcase | remove_accents -%}
-          {%- assign scholar_first_normalized = site.scholar.first_name | join: ',' | downcase | replace: '.', '' -%}
-          {% if scholar_last_normalized contains author_last_normalized %}
-            {% if scholar_first_normalized contains author_first_normalized %}
-              {% assign author_is_self = true %}
-            {% endif %}
-          {%- endif -%}
+        {% if author_is_visible %}
+          {% if rendered_items > 0 %}
+            {% assign remaining = visible_items_total | minus: rendered_items %}
+            {% if remaining == 1 %} and {% else %}, {% endif %}
+          {% endif %}
           {% assign coauthor_url = null %}
           {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
           {% if site.data.coauthors[clean_last_name] %}
@@ -220,8 +205,38 @@
               {{ author_last_html -}}
             {% endif %}
           {%- endif -%}
-        {%- endfor -%}
-      {% endif %}
+          {% assign rendered_items = rendered_items | plus: 1 %}
+        {% elsif hidden_authors_count > 0 and placeholder_inserted == false %}
+          {% if rendered_items > 0 %}
+            {% assign remaining = visible_items_total | minus: rendered_items %}
+            {% if remaining == 1 %} and {% else %}, {% endif %}
+          {% endif %}
+          {% assign more_authors_hide = hidden_authors_count | append: ' more author' %}
+          {% if hidden_authors_count > 1 %}
+            {% assign more_authors_hide = more_authors_hide | append: 's' %}
+          {% endif %}
+          <span
+            class="more-authors"
+            title="click to view {{ more_authors_hide }}"
+            onclick="
+                var element = $(this);
+                element.attr('title', '');
+                var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ hidden_authors_show }}' : '{{ more_authors_hide }}';
+                var cursorPosition = 0;
+                var textAdder = setInterval(function(){
+                  element.html(more_authors_text.substring(0, cursorPosition + 1));
+                  if (++cursorPosition == more_authors_text.length){
+                    clearInterval(textAdder);
+                  }
+              }, '{{ site.more_authors_animation_delay }}');
+            "
+          >
+            {{- more_authors_hide -}}
+          </span>
+          {% assign rendered_items = rendered_items | plus: 1 %}
+          {% assign placeholder_inserted = true %}
+        {% endif %}
+      {% endfor %}
       {% if entry.annotation %}
         <i
           class="fa-solid fa-circle-info ml-1"
