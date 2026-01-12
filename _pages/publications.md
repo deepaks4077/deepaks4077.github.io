@@ -8,6 +8,10 @@ nav: true
 nav_order: 2
 _styles: >
   .post-title, .post-description { display: none; }
+  .publications .title { margin-bottom: 0.4rem; }
+  .publications .author { margin-bottom: 0.4rem; }
+  .publications .periodical-venue { margin-bottom: 0.4rem; }
+  .publications .periodical-date { margin-bottom: 0.4rem; }
 ---
 
 {% if pages.ppr_years.size > 0 %}

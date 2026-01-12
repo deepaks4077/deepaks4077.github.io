@@ -209,13 +209,23 @@
       {% include hook/bib.liquid %}
     {% endif %}
     {% assign entrytype_text = entrytype | strip_html | strip %}
-    {% capture periodical %}{{ entrytype }}{% if entrytype_text != "" and entryyear != "" %}, {% endif %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
-    <div class="periodical">
-      {{ periodical | strip }}
-    </div>
-    <div class="periodical">
-      {{ entry.note | strip }}
-    </div>
+    {% capture periodical_venue %}{{ entrytype }}{% endcapture %}
+    {% capture periodical_date %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
+    {% if periodical_venue | strip != '' %}
+      <div class="periodical periodical-venue">
+        {{ periodical_venue | strip }}
+      </div>
+    {% endif %}
+    {% if periodical_date | strip != '' %}
+      <div class="periodical periodical-date">
+        {{ periodical_date | strip }}
+      </div>
+    {% endif %}
+    {% if entry.note %}
+      <div class="periodical">
+        {{ entry.note | strip }}
+      </div>
+    {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">
