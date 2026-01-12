@@ -3,6 +3,7 @@ layout: about
 permalink: /
 title: About
 description: Applied Scientist @ Microsoft • AI Agents • AI Evals • Post-training LLMs
+subtitle: Applied Scientist @ Microsoft • AI Agents • AI Evals • Post-training LLMs
 
 profile:
   align: right
