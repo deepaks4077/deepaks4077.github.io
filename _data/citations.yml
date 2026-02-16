@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-02-11'
+  last_updated: '2026-02-16'
 papers:
   EGRYwWQAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,11 +10,11 @@ papers:
     title: RECOVER identifies synergistic drug combinations in vitro through sequential model optimization
     year: '2023'
   EGRYwWQAAAAJ:eQOLeE2rZwMC:
-    citations: 10
+    citations: 11
     title: 'RECOVER: sequential model optimization platform for combination drug repurposing identifies novel synergistic compounds in vitro'
     year: '2022'
   EGRYwWQAAAAJ:u-x6o8ySG0sC:
-    citations: 11
+    citations: 8
     title: Deep interpretability for GWAS
     year: '2020'
   EGRYwWQAAAAJ:u5HHmVD_uO8C:
@@ -22,6 +22,6 @@ papers:
     title: Off-policy policy gradient algorithms by constraining the state distribution shift
     year: '2019'
   EGRYwWQAAAAJ:ufrVoPGSRksC:
-    citations: 44
+    citations: 45
     title: Benchmarking bias mitigation algorithms in representation learning through fairness metrics
     year: '2021'
