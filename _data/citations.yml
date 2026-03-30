@@ -1,20 +1,76 @@
 metadata:
-  last_updated: '2026-02-16'
+  last_updated: '2026-03-30'
 papers:
+  EGRYwWQAAAAJ:0EnyYjriUFMC:
+    citations: 16
+    title: Performance analysis of conventional diversity combining schemes in Rayleigh fading channel
+    year: '2012'
   EGRYwWQAAAAJ:2osOgNQ5qMEC:
     citations: 0
     title: Deep Learning for Genome-Wide Association Studies
     year: '2021'
+  EGRYwWQAAAAJ:3fE2CSJIrl8C:
+    citations: 12
+    title: Comparison of ICI cancellation schemes for BER performance improvement of OFDM system
+    year: '2014'
+  EGRYwWQAAAAJ:5nxA0vEk-isC:
+    citations: 0
+    title: INTERNATIONAL JOURNAL OF ENGINEERING SCIENCES & MANAGEMENT BER ANALYSIS THROUGH WIMAX PHY LAYER OVER AN AWGN FLAT FADING CHANNEL
+    year: '2012'
+  EGRYwWQAAAAJ:8k81kl-MbHgC:
+    citations: 1
+    title: BER An Alysis through WIMAX PHY Layer Over An AWGN Flat Fading Channel
+    year: '2013'
+  EGRYwWQAAAAJ:KlAtU1dfN6UC:
+    citations: 9
+    title: A survey of ICI reduction techniques in OFDM system
+    year: '2013'
+  EGRYwWQAAAAJ:LkGwnXOMwfcC:
+    citations: 0
+    title: A NEW SCHEME FOR PACKET DELAY & THROUGHPUT FOR RELIABLE BANDWIDTH IN IEEE 802-16 WIMAX
+    year: Unknown Year
+  EGRYwWQAAAAJ:MXK_kJrjxJIC:
+    citations: 0
+    title: BER ANALYSIS THROUGH WIMAX PHY LAYER OVER AN AWGN FLAT FADING CHANNEL
+    year: '2012'
+  EGRYwWQAAAAJ:Se3iqnhoufwC:
+    citations: 5
+    title: A meandered rectangular monopole antenna for quad-band applications
+    year: '2015'
+  EGRYwWQAAAAJ:UebtZRa9Y70C:
+    citations: 6
+    title: A miniaturized ultra wideband monopole antenna with defected ground
+    year: '2016'
   EGRYwWQAAAAJ:WF5omc3nYNoC:
     citations: 22
     title: RECOVER identifies synergistic drug combinations in vitro through sequential model optimization
     year: '2023'
+  EGRYwWQAAAAJ:Zph67rFs4hoC:
+    citations: 0
+    title: A Higher Order ADC Using Multi bit Quantizer and Noise Cancellation
+    year: '2019'
+  EGRYwWQAAAAJ:_FxGoFyzp5QC:
+    citations: 2135
+    title: 'Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities'
+    year: '2025'
   EGRYwWQAAAAJ:eQOLeE2rZwMC:
     citations: 11
     title: 'RECOVER: sequential model optimization platform for combination drug repurposing identifies novel synergistic compounds in vitro'
     year: '2022'
+  EGRYwWQAAAAJ:hqOjcs7Dif8C:
+    citations: 12
+    title: A novel design of tri-band patch antenna for GSM/WiFi/WiMAX applications
+    year: '2014'
+  EGRYwWQAAAAJ:kNdYIx-mwKoC:
+    citations: 2
+    title: Performance improvement of OFDM system by using ICI self cancellation technique
+    year: '2013'
+  EGRYwWQAAAAJ:roLk4NBRz8UC:
+    citations: 42
+    title: 'Diversity: A fading reduction technique'
+    year: '2012'
   EGRYwWQAAAAJ:u-x6o8ySG0sC:
-    citations: 8
+    citations: 9
     title: Deep interpretability for GWAS
     year: '2020'
   EGRYwWQAAAAJ:u5HHmVD_uO8C:
@@ -22,6 +78,6 @@ papers:
     title: Off-policy policy gradient algorithms by constraining the state distribution shift
     year: '2019'
   EGRYwWQAAAAJ:ufrVoPGSRksC:
-    citations: 45
+    citations: 47
     title: Benchmarking bias mitigation algorithms in representation learning through fairness metrics
     year: '2021'
