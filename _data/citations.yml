@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-03-30'
+  last_updated: '2026-04-24'
 papers:
   EGRYwWQAAAAJ:0EnyYjriUFMC:
     citations: 16
@@ -37,6 +37,10 @@ papers:
     citations: 5
     title: A meandered rectangular monopole antenna for quad-band applications
     year: '2015'
+  EGRYwWQAAAAJ:ULOm3_A8WrAC:
+    citations: 0
+    title: An Advanced Low Complexity Adaptive Filter for Echo Cancellation
+    year: Unknown Year
   EGRYwWQAAAAJ:UebtZRa9Y70C:
     citations: 6
     title: A miniaturized ultra wideband monopole antenna with defected ground
@@ -50,7 +54,7 @@ papers:
     title: A Higher Order ADC Using Multi bit Quantizer and Noise Cancellation
     year: '2019'
   EGRYwWQAAAAJ:_FxGoFyzp5QC:
-    citations: 2135
+    citations: 2699
     title: 'Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities'
     year: '2025'
   EGRYwWQAAAAJ:eQOLeE2rZwMC:
