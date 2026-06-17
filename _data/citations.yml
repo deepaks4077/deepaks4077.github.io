@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-05-25'
+  last_updated: '2026-06-17'
 papers:
   EGRYwWQAAAAJ:2osOgNQ5qMEC:
     citations: 0
     title: Deep Learning for Genome-Wide Association Studies
     year: '2021'
   EGRYwWQAAAAJ:WF5omc3nYNoC:
-    citations: 22
+    citations: 23
     title: RECOVER identifies synergistic drug combinations in vitro through sequential model optimization
     year: '2023'
   EGRYwWQAAAAJ:eQOLeE2rZwMC:
