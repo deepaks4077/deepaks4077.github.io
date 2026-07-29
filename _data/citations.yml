@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-07-13'
+  last_updated: '2026-07-29'
 papers:
   EGRYwWQAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,7 +10,7 @@ papers:
     title: RECOVER identifies synergistic drug combinations in vitro through sequential model optimization
     year: '2023'
   EGRYwWQAAAAJ:eQOLeE2rZwMC:
-    citations: 11
+    citations: 12
     title: 'RECOVER: sequential model optimization platform for combination drug repurposing identifies novel synergistic compounds in vitro'
     year: '2022'
   EGRYwWQAAAAJ:u-x6o8ySG0sC:
