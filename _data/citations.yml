@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-08-10'
+  last_updated: '2026-08-28'
 papers:
   EGRYwWQAAAAJ:2osOgNQ5qMEC:
     citations: 0
     title: Deep Learning for Genome-Wide Association Studies
     year: '2021'
   EGRYwWQAAAAJ:WF5omc3nYNoC:
-    citations: 26
+    citations: 27
     title: RECOVER identifies synergistic drug combinations in vitro through sequential model optimization
     year: '2023'
   EGRYwWQAAAAJ:eQOLeE2rZwMC:
@@ -22,6 +22,6 @@ papers:
     title: Off-policy policy gradient algorithms by constraining the state distribution shift
     year: '2019'
   EGRYwWQAAAAJ:ufrVoPGSRksC:
-    citations: 48
+    citations: 49
     title: Benchmarking bias mitigation algorithms in representation learning through fairness metrics
     year: '2021'
